@@ -8,10 +8,13 @@ var decay_time_left : float = 0
 var is_down := false
 var live := false
 
+signal just_pressed
+
 func update_button(pressed: bool):
 	if not is_down and pressed:
 		live = true
 		decay_time_left = decay_time
+		just_pressed.emit()
 	is_down = pressed
 		
 func _process(delta):
